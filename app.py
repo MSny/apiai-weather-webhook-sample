@@ -28,7 +28,10 @@ def webhook():
     return r
 
 
-    def processRequest(req):
+def processRequest(req):
+    
+    
+    
     #baseurl = "https://query.yahooapis.com/v1/public/yql?"
     baseurl = "https://maps.googleapis.com/maps/api/geocode/json?"
     yql_query = makeYqlQuery(req)
@@ -45,7 +48,7 @@ def webhook():
     return res
 
 
-    def makeYqlQuery(req):
+def makeYqlQuery(req):
     result = req.get("result")
     parameters = result.get("parameters")
     city = parameters.get("city")
@@ -62,7 +65,7 @@ def webhook():
     #return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
 
 
-    def makeWebhookResult(data):
+def makeWebhookResult(data):
     query = data.get('results')
     print("query")
     print(query)
@@ -71,7 +74,7 @@ def webhook():
     if query is None:
         return {}
 
-    result = data.get(['geometry'])
+    result = query.get(['geometry'])
     print("result geo " + result)
     if result is None:
         return {}
