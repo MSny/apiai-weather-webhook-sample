@@ -63,16 +63,16 @@ def makeYqlQuery(req):
 
 
 def makeWebhookResult(data):
-    #query = data.get('query')
-    #if query is None:
-     #   return {}
+    query = data.get('results')
+    if query is None:
+        return {}
 
-    #result = query.get('results')
-    #if result is None:
-     #   return {}
+    result = query.get('geometry')
+    if result is None:
+        return {}
 
-    #channel = result.get('channel')
-    #if channel is None:
+    channel = result.get('location')
+    if channel is None:
         return {}
 
     #item = channel.get('item')
@@ -89,7 +89,7 @@ def makeWebhookResult(data):
 
     #speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
      #        ", the temperature is " + condition.get('temp') + " " + units.get('temperature')
-    speech = data
+    speech = channel
     print("Response:")
     print(speech)
 
