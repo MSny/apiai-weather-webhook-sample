@@ -42,8 +42,10 @@ def processRequest(req):
     print("YQL URL "+yql_url)
     result = urllib.urlopen(yql_query).read()
     print("result "+result)
-    data = json.loads(result)
-    print("data ")
+    jsonResult = json.loads(result)
+    print("data "+data)
+    print data['results'][0]['geometry']
+    
     res = makeWebhookResult(data)
     return res
 
