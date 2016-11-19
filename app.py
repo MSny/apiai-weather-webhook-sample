@@ -66,13 +66,13 @@ def makeYqlQuery(req):
 
 
 def makeWebhookResult(data):
-    query = data.get('results'+[1])
+    query = data.get('results')
     print("query "+ query)
     
     if query is None:
         return {}
 
-    result = query.get('geometry')
+    result = query.get([1])
     print("result geo " + result)
     if result is None:
         return {}
