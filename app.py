@@ -28,10 +28,7 @@ def webhook():
     return r
 
 
-def processRequest(req):
-    
-    
-    
+    def processRequest(req):
     #baseurl = "https://query.yahooapis.com/v1/public/yql?"
     baseurl = "https://maps.googleapis.com/maps/api/geocode/json?"
     yql_query = makeYqlQuery(req)
@@ -48,7 +45,7 @@ def processRequest(req):
     return res
 
 
-def makeYqlQuery(req):
+    def makeYqlQuery(req):
     result = req.get("result")
     parameters = result.get("parameters")
     city = parameters.get("city")
@@ -65,8 +62,8 @@ def makeYqlQuery(req):
     #return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
 
 
-def makeWebhookResult(data):
-    query = data.get('results.geometry')
+    def makeWebhookResult(data):
+    query = data.get('results')
     print("query")
     print(query)
     
@@ -74,7 +71,7 @@ def makeWebhookResult(data):
     if query is None:
         return {}
 
-    result = data.get()
+    result = data.get(['geometry'])
     print("result geo " + result)
     if result is None:
         return {}
@@ -110,7 +107,7 @@ def makeWebhookResult(data):
     }
 
 
-if __name__ == '__main__':
+    if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
 
     print "Starting app on port %d" % port
