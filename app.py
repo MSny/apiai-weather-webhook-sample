@@ -38,8 +38,10 @@ def processRequest(req):
     print(yql_query)
     if yql_query is None:
         return {}
-    #yql_url = baseurl + urllib.urlencode({'q': yql_query}) + "&format=json"
+    yql_url = baseurl + urllib.urlencode({'q': yql_query}) + "&format=json"
+    print("YQL URL "+yql_url)
     result = urllib.urlopen(yql_query).read()
+    print("result "+result)
     data = json.loads(result)
     res = makeWebhookResult(data)
     return res
