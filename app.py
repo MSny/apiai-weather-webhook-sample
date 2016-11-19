@@ -69,7 +69,8 @@ def makeWebhookResult(data):
     query = data.get('results')
     print("query")
     print(query)
-    print( 'query attempt '+['0'])
+    print( "query attempt ")
+    print( query+['0'])
     if query is None:
         return {}
 
