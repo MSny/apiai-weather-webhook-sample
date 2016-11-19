@@ -40,8 +40,6 @@ def processRequest(req):
         return {}
     yql_url = baseurl + urllib.urlencode({'q': yql_query}) + "&format=json"
     print("YQL URL "+yql_url)
-    loaded_json = json.load(urllib2.urlopen(yql_query))
-    print("loaded Json "+loaded_json)
     result = urllib.urlopen(yql_query).read()
     print("result "+result)
     data = json.loads(result)
