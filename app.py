@@ -42,7 +42,7 @@ def processRequest(req):
     print("YQL URL "+yql_url)
     result = urllib.urlopen(yql_query).read()
     print("result "+result)
-    jsonResult = json.loads(result)
+    data = json.loads(result)
     print("data "+data)
     print data['results'][0]['geometry']
     
