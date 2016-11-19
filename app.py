@@ -74,7 +74,7 @@ def makeWebhookResult(data):
     if query is None:
         return {}
 
-    result = query.get('[geometry]')
+    result = query.get("['geometry']")
     print("result geo " + result)
     if result is None:
         return {}
