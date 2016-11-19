@@ -69,13 +69,13 @@ def makeWebhookResult(data):
     if query is None:
         return {}
 
-    result = query.get('geometry')
+    result = query.get([0])
     print("result")
     print(result)
     if result is None:
         return {}
 
-    channel = result.get('location')
+    channel = result.get('geometry')
     print("channel")
     print(channel)
     if channel is None:
