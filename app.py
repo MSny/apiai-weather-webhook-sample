@@ -64,14 +64,20 @@ def makeYqlQuery(req):
 
 def makeWebhookResult(data):
     query = data.get('results')
+    print("query")
+    print(query)
     if query is None:
         return {}
 
     result = query.get('geometry')
+    print("result")
+    print(result)
     if result is None:
         return {}
 
     channel = result.get('location')
+    print("channel")
+    print(channel)
     if channel is None:
         return {}
 
@@ -79,11 +85,11 @@ def makeWebhookResult(data):
     #location = channel.get('location')
     #units = channel.get('units')
     #if (location is None) or (item is None) or (units is None):
-        return {}
+        #return {}
 
     #condition = item.get('condition')
     #if condition is None:
-        return {}
+        #return {}
 
     # print(json.dumps(item, indent=4))
 
