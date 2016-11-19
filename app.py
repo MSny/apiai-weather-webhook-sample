@@ -42,8 +42,9 @@ def processRequest(req):
     print("YQL URL "+yql_url)
     result = urllib.urlopen(yql_query).read()
     print("result "+result)
-    data = json.loads(result)
+    data = result
     res = makeWebhookResult(data)
+    print("res "+res)
     return res
 
 
@@ -65,21 +66,19 @@ def makeYqlQuery(req):
 
 
 def makeWebhookResult(data):
-    query = data.get('results')
+    query = data.get('results'.[0])
     print("query")
     print(query)
     if query is None:
         return {}
 
-    result = query.get([1])
-    print("result")
-    print(result)
+    result = query.get('geometry')
+    print("result " + result)
     if result is None:
         return {}
 
     channel = result.get('geometry')
-    print("channel")
-    print(channel)
+    print("channel "+channel)
     if channel is None:
         return {}
 
