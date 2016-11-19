@@ -66,20 +66,19 @@ def makeYqlQuery(req):
 
 
 def makeWebhookResult(data):
-    query = data.get('results')
+    query = data.get('results'+['0'])
     print("query")
     print(query)
-    print( "query attempt ")
-    print( query+['0'])
+    
     if query is None:
         return {}
 
     result = query.get('geometry')
-    print("result Makeweb " + result)
+    print("result geo " + result)
     if result is None:
         return {}
 
-    channel = result.get('geometry')
+    channel = result.get('location')
     print("channel "+channel)
     if channel is None:
         return {}
