@@ -66,7 +66,7 @@ def makeYqlQuery(req):
 
 
 def makeWebhookResult(data):
-    query = data.get(results['geometry'])
+    query = data.get('results'+'[geometry]')
     print("query")
     print(query)
     
