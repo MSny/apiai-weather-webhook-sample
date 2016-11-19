@@ -69,7 +69,7 @@ def makeWebhookResult(data):
     if query is None:
         return {}
 
-    result = query.get([0])
+    result = query.get([1])
     print("result")
     print(result)
     if result is None:
